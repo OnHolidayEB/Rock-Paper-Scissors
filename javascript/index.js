@@ -43,6 +43,9 @@ let playerSelection = document.getElementById("playerSelection");
 let btnPushed = document.getElementById('buttonWrapper');
 let winner = document.getElementById('winner');
 
+let playerBtn = document.querySelectorAll('button');
+
+
 
 let compArray = ["Rock", "Paper", "Scissors"];
 let compOutput = "default";
@@ -50,10 +53,6 @@ let compSelection = document.getElementById("computerSelection");
 
 
 
-rockBtn.addEventListener('click', playerRock);
-paperBtn.addEventListener('click', playerPaper);
-scissorsBtn.addEventListener('click', playerScissors);
-btnPushed.addEventListener('click', displayComp);
 
 let playerScore = 0;
 let computerScore = 0;
@@ -61,27 +60,16 @@ let playerScoreDisplay = document.getElementById("playerScore");
 let computerScoreDisplay = document.getElementById("computerScore");
 
 
+playerBtn.forEach((button) => {
 
+    button.addEventListener('click', () => {
+        playerInput = button.id;
+        playRound();
+    }
+     )
+    
+});
 
-function playerRock(){
-    playerInput = "Rock";
-    playRound();
-
-}
-
-function playerPaper(){
-    playerInput = "Paper";
-    playRound();
-
-
-}
-
-function playerScissors(){
-    playerInput = "Scissors";
-    playRound();
-
-
-}
 
 function displayPlayerSelection(){
     playerSelection.textContent = `Player Selects ${playerInput}`;
@@ -148,9 +136,7 @@ function declareWinner(){
 
 
 
-/*while (playerScore != 5 && computerScore != 5) {
-    compareOutput(playerInput, compOutput);
-}*/
+
 
 
 
